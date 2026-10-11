@@ -28,6 +28,8 @@ node --test scripts/*.test.mjs
 
 모두 통과해야 합니다. 실패하면 멈추고 실패 내용을 그대로 보고합니다.
 
+마크다운 원본을 PDF로 만들려면 Chrome 계열 브라우저(Chrome, Edge, Chromium, Brave)가 필요합니다. 없어도 설치는 계속하고, 보고에 "PDF는 HTML을 브라우저에서 인쇄해 만듭니다"라고 적습니다.
+
 ## 3. 개인 자료를 둘 경로 정하기
 
 이 skill은 사용자 자료를 skill 폴더 밖의 `home`에 둡니다. 기본은 `~/resume/`입니다. skill 폴더에는 사용자 자료를 쓰지 않으므로 `git pull`로 업데이트해도 충돌하지 않습니다.

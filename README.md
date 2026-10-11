@@ -22,7 +22,7 @@ git clone https://github.com/rheech22/dev-resume.git <skill 경로>/dev-resume
 
 처음에는 지금 쓰는 이력서를 건네면 됩니다. 형식은 PDF, docx, 마크다운, URL 무엇이든 괜찮습니다.
 
-관리 방식별로 읽기·편집·렌더 요령을 담은 adapter가 있습니다: 마크다운(기본), PDF, Notion, Reactive Resume. 맞는 adapter가 없으면 agent가 편집 방법을 묻고 기록합니다.
+관리 방식별로 읽기·편집·렌더 요령을 담은 adapter가 있습니다: 마크다운(기본), PDF, Notion, Reactive Resume. 쓰던 도구가 없으면 마크다운으로 옮겨 이 skill의 렌더러로 PDF까지 만듭니다. 맞는 adapter가 없으면 agent가 편집 방법을 묻고 기록합니다.
 
 ```text
 지금 쓰는 이력서야. 이걸로 시작하자.
@@ -58,6 +58,7 @@ agent는 이력서를 사실 단위로 쪼개 경력 사실 파일에 기록하�
 ```bash
 node scripts/check-copy.mjs <원고 파일>
 node scripts/check-copy.mjs --terms my-terms.json <원고 파일>
+node scripts/render.mjs <home>/resume.md   # 마크다운 → PDF (Chrome 계열 브라우저 필요)
 node --test scripts/*.test.mjs
 ```
 
@@ -70,7 +71,7 @@ Node 20 이상이 필요하며 다른 의존성은 없습니다. 마크다운과
 | `rules/` | 고정. 모드 판정, 근거 수집, 문장, 표기, 리뷰, 맞춤본, 렌더 점검 |
 | `adapters/` | 교체. 이력서 형식별 읽기·편집·렌더 요령 (markdown, pdf, notion, rxresume) |
 | `templates/` | 설정(workspace), 경력 사실, 리뷰 보고 양식. 처음 실행 때 `home`으로 복사됩니다 |
-| `scripts/` | 교열 검사와 테스트 |
+| `scripts/` | 교열 검사, 마크다운 → PDF 렌더러, 테스트 |
 
 개인 정보는 이 저장소에 두지 않습니다. 모든 사용자 자료는 `home`에 둡니다.
 

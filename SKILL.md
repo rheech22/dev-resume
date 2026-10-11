@@ -8,7 +8,7 @@ description: "Use when the user shares an existing resume to start from, or asks
 개발자 이력서를 근거에 기반해 쓰고, 여러 면접관 관점으로 검증하는 workflow입니다.
 절차 순서대로 필요한 파일만 읽습니다. 시작 전에 모든 파일을 읽지 않습니다.
 
-이 skill의 버전은 **0.2.0**입니다. 리뷰 기록과 작업 보고에 버전을 남깁니다.
+이 skill의 버전은 **0.3.0**입니다. 리뷰 기록과 작업 보고에 버전을 남깁니다.
 
 ## 사용자 자료의 위치
 
@@ -63,3 +63,4 @@ workspace나 `facts` 맨 위의 형식 표시(`<!-- dev-resume facts v1 -->`)가
 - `templates/facts.md`: 경력 사실 파일 양식
 - `templates/review-report.md`: 리뷰 보고 양식
 - `scripts/check-copy.mjs`: 기계적 교열 검사
+- `scripts/render.mjs`, `templates/resume.css`: 마크다운 → PDF 기본 렌더러와 기본 모양

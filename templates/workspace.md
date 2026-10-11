@@ -1,8 +1,9 @@
-<!-- dev-resume workspace v2 -->
+<!-- dev-resume workspace v3 -->
 # workspace
 
 이 workflow가 사용자마다 다르게 읽는 값입니다. agent가 처음 실행할 때 이 템플릿을 `<home>/workspace.md`로 복사하고,
 대화로 확인한 값을 그 사본에 적습니다. 사용자가 직접 고치지 않아도 됩니다.
+사본에서는 표의 값을 실제 값으로 바꾸고, 각 절의 `text` 예시 블록은 실제 기록으로 바꿉니다. `home`은 `local.md`로 바꿨더라도 실제 경로를 적습니다.
 skill 폴더 안의 이 템플릿은 고치지 않습니다. 그래야 skill을 업데이트할 때 사용자 설정과 충돌하지 않습니다.
 
 | Slot | 값 |
@@ -12,7 +13,8 @@ skill 폴더 안의 이 템플릿은 고치지 않습니다. 그래야 skill을 
 | `source` | `<home>/resume.md` |
 | `format` | `markdown` |
 | `edit` | 원본을 직접 고칩니다 |
-| `render` | 렌더 확인을 하지 않습니다 |
+| `render` | `node <skill>/scripts/render.mjs <home>/resume.md` |
+| `submit` | 미정 |
 | `design` | 미정 |
 | `sources` | 정하지 않음 |
 
@@ -60,10 +62,26 @@ skill 폴더 안의 이 템플릿은 고치지 않습니다. 그래야 skill을 
 
 ## render
 
-기본값: 렌더 확인을 하지 않습니다
+기본값: `node <skill>/scripts/render.mjs <home>/resume.md` (마크다운 원본일 때)
 
-최종 모양을 확인하는 방법입니다. PDF 내보내기 명령, 이미지 변환 도구, agent가 PDF를 직접 읽는 방법 중 쓸 수 있는 것을 적습니다.
-기본값이면 `layout` 모드는 사용자가 건넨 PDF나 이미지로만 진행합니다.
+`<skill>`과 `<home>`은 절대 경로로 바꿔 적습니다. 사용자 스타일 파일을 쓰면 `--css <home>/style.css`까지 적습니다.
+
+최종 모양을 만들고 확인하는 방법입니다. 마크다운 원본이면 기본 렌더러로 PDF를 만듭니다(`adapters/markdown.md`).
+다른 형식이면 그 adapter의 렌더 절을 따르고, 쓸 수 있는 방법이 없으면 `사용자가 PDF를 줍니다`라고 적습니다. 그때 `layout` 모드는 사용자가 건넨 PDF나 이미지로만 진행합니다.
+
+## submit
+
+기본값: 미정
+
+이력서를 어떻게 제출하는지 적습니다. `layout` 점검의 대상이 이 값에 따라 달라집니다.
+
+| 값 | 뜻 |
+| --- | --- |
+| PDF | PDF 파일을 첨부하거나 업로드합니다. 페이지 경계를 점검합니다 |
+| 공개 링크 | 웹 페이지 주소를 보냅니다(Notion 게시 페이지 등). 첫 화면과 모바일 너비를 점검합니다 |
+| 둘 다 | 두 점검을 모두 합니다 |
+
+공개 링크면 지금 게시되어 있는지도 함께 적습니다. 예: `공개 링크 (게시됨, 2026-01-15 사용자 확인)`.
 
 ## design
 
