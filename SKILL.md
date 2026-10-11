@@ -8,7 +8,7 @@ description: "Use when the user shares an existing resume to start from, or asks
 개발자 이력서를 근거에 기반해 쓰고, 여러 면접관 관점으로 검증하는 workflow입니다.
 절차 순서대로 필요한 파일만 읽습니다. 시작 전에 모든 파일을 읽지 않습니다.
 
-이 skill의 버전은 **0.1.0**입니다. 리뷰 기록과 작업 보고에 버전을 남깁니다.
+이 skill의 버전은 **0.2.0**입니다. 리뷰 기록과 작업 보고에 버전을 남깁니다.
 
 ## 사용자 자료의 위치
 
@@ -22,7 +22,7 @@ agent가 workspace와 `facts` 파일에 기록합니다. 사용자가 대화로 
 skill 폴더 안의 파일에는 사용자 자료를 쓰지 않습니다.
 
 `facts` 파일이 없거나 비어 있으면 `rules/intake.md`의 처음 실행 절차부터 진행합니다.
-workspace나 `facts` 맨 위의 형식 표시(`<!-- dev-resume facts v1 -->`)가 템플릿보다 낮거나 없으면 `rules/intake.md`의 "형식 옮기기"를 따릅니다.
+workspace나 `facts` 맨 위의 형식 표시(`<!-- dev-resume facts v1 -->`)가 템플릿보다 낮거나 없으면 `rules/intake.md`의 "형식 옮기기"를 제안합니다. 지금 요청이 옛 형식으로도 할 수 있는 일이면 요청을 먼저 마치고 끝에 제안합니다.
 
 ## 모드
 
@@ -34,7 +34,7 @@ workspace나 `facts` 맨 위의 형식 표시(`<!-- dev-resume facts v1 -->`)가
 | `write` | 경력 사실을 모아 초안을 쓰거나 기존 문장을 고칩니다 | `rules/evidence.md`, `rules/writing.md`, `rules/prose.md` |
 | `review` | 독립 리뷰어(기본 3명, 사용자가 바꿀 수 있음)가 읽고, 결과를 종합해 보고합니다. 고치지 않습니다 | `rules/review.md` |
 | `tailor` | 채용 공고에 맞춘 사본을 만듭니다 | `rules/tailoring.md`, `rules/writing.md` |
-| `layout` | 렌더 결과에서 페이지 경계와 시각 위계를 점검합니다 | `rules/layout.md` |
+| `layout` | 사용자가 고른 디자인을 기록하고, 렌더 결과를 그 기록과 공통 점검으로 확인합니다 | `rules/layout.md` |
 
 이력서를 읽거나, 고치거나, 렌더할 때는 workspace의 `format`에 맞는 `adapters/` 문서를 함께 읽습니다.
 
